@@ -67,7 +67,15 @@ namespace Smooth.IoC.UnitOfWork.Abstractions
             if (Transaction?.Connection == null) return;
             try
             {
-                Commit();
+                if (System.Runtime.InteropServices.Marshal.GetExceptionCode() == 0)
+                {
+                    // commit only if no exception throws
+                    Commit();
+                }
+                else
+                {
+                    Rollback();
+                }
                 Transaction?.Dispose();
             }
             catch
@@ -77,6 +85,10 @@ namespace Smooth.IoC.UnitOfWork.Abstractions
             }
             finally
             {
+                if (this.Transaction != null)
+                {
+                    this.Transaction.Dispose();
+                }
                 Transaction = null;
                 _factory.Release(this);
             }
