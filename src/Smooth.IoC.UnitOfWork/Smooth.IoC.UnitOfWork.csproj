@@ -3,7 +3,7 @@
 	<TargetFrameworks>net461;net471;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Smooth.IoC.UnitOfWork</PackageId>
-    <Version>0.5.11</Version>
+    <Version>0.5.12</Version>
     <Authors>Rik Svendsen Rose</Authors>
     <Company>GAIT</Company>
     <Product>Smooth.IoC.UnitOfWork</Product>
