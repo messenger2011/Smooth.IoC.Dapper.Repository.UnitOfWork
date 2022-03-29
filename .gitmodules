@@ -1,4 +1,4 @@
 [submodule "lib/Dapper.FastCRUD"]
 	path = lib/Dapper.FastCRUD
-	url = git@github.com:messenger2011/Dapper.FastCRUD.git
+	url = https://github.com/messenger2011/Dapper.FastCRUD.git
 	branch = backport-compatible
