@@ -17,22 +17,22 @@ namespace Smooth.IoC.Repository.UnitOfWork.Helpers
 
         public void SetDialogueIfNeeded<TEntity>(SqlDialect sqlDialect) where TEntity : class
         {
-            if (_container.TryEntityIsFroozenOrDialogueIsCorrect<TEntity>())
-            {
-                return;
-            }
+            // if (_container.TryEntityIsFroozenOrDialogueIsCorrect<TEntity>())
+            // {
+            //     return;
+            // }
 
-            var mapping = OrmConfiguration.GetDefaultEntityMapping<TEntity>();
-            if (!mapping.IsFrozen && mapping.Dialect != sqlDialect)
-            {
-                lock (_lockSqlDialectUpdate)
-                {
-                    mapping = OrmConfiguration.GetDefaultEntityMapping<TEntity>(); //reload to be sure
-                    if (mapping.IsFrozen || mapping.Dialect == sqlDialect) return;
-                    mapping.SetDialect(sqlDialect);
-                }
-            }
-            _container.AddEntityFroozenOrDialogueState<TEntity>(mapping.IsFrozen || mapping.Dialect == sqlDialect);
+            // var mapping = OrmConfiguration.GetDefaultEntityMapping<TEntity>();
+            // if (!mapping.IsFrozen && mapping.Dialect != sqlDialect)
+            // {
+            //     lock (_lockSqlDialectUpdate)
+            //     {
+            //         mapping = OrmConfiguration.GetDefaultEntityMapping<TEntity>(); //reload to be sure
+            //         if (mapping.IsFrozen || mapping.Dialect == sqlDialect) return;
+            //         mapping.SetDialect(sqlDialect);
+            //     }
+            // }
+            // _container.AddEntityFroozenOrDialogueState<TEntity>(mapping.IsFrozen || mapping.Dialect == sqlDialect);
         }
         public bool? GetEntityState<TEntity>() where TEntity : class
         {
